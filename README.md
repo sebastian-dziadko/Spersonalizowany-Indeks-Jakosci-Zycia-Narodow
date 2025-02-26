@@ -1,0 +1,1 @@
+# Jakosc-zycia-indeks
