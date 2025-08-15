@@ -1,0 +1,194 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import tkinter as tk
+from tkinter import ttk
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+from threading import Timer
+
+# Wczytanie danych z pliku Excel
+file_path = r"C:\Users\48690\Desktop\OECD.xlsx" #Proszę wstawić własną ścieżkę
+data = pd.read_excel(file_path)
+
+# Lista zmiennych ilościowych
+variables = [
+    "Pkb per capita", "Konsumpcja", "Długość życia kobiet", "Długość życia mężczyzn",
+    "Stopa bezrobocia", "Średnia roczna płaca", "Decyl 9/1 zarobki", "Decyl 9/5 zarobki",
+    "Liczba godzin przepracowanych/pracownika", "Liczba samobójstw na 100 tys. mieszkanców",
+    "Wydatki publiczne jako % PKB", "Gini dochod", "Odsetek ubogich (dochod <50% mediany)",
+    "Decyl 9/5 dochód", "Decyl 9/1 dochód", "PKB na godzinę pracy ceny stale ppp",
+    "smierci drogowe na 100 k", "Realne ceny mieszkan (2015=100)", "Wiek emerytalny mężczyzn", "Wiek emerytalny kobiet"
+]
+
+# Określenie stymulantów i destymulantów
+stimulants = {"Pkb per capita", "Konsumpcja", "Długość życia kobiet", "Długość życia mężczyzn",
+              "Średnia roczna płaca", "Wydatki publiczne jako % PKB", "PKB na godzinę pracy ceny stale ppp"}
+
+destimulants = {"Wiek emerytalny kobiet", "Długość życia kobiet", 
+                "Długość życia mężczyzn",  "Decyl 9/1 zarobki", "Decyl 9/5 zarobki", 
+                "Liczba godzin przepracowanych/pracownika", "Liczba samobójstw na 100 tys. mieszkanców", 
+                "Gini dochod", "Odsetek ubogich (dochod <50% mediany)", 
+                "Decyl 9/5 dochód", "Decyl 9/1 dochód", "PKB na godzinę pracy ceny stale ppp", 
+                "smierci drogowe na 100 k", "Realne ceny mieszkan (2015=100)"}
+
+# Domyślne wagi (równe, sumujące się do 100)
+weights = {var: 100 / len(variables) for var in variables}
+
+def normalize(variable, stimulant=True):
+    if stimulant:
+        return (data[variable] - data[variable].min()) / (data[variable].max() - data[variable].min())
+    else:
+        return (data[variable].max() - data[variable]) / (data[variable].max() - data[variable].min())
+
+def calculate_index():
+    for var in variables:
+        data[f"{var}_norm"] = normalize(var, stimulant=(var in stimulants))
+    data['Indeks Jakości Życia'] = data[[f"{var}_norm" for var in variables]].mul(
+        [weights[var] / 100 for var in variables]).sum(axis=1)
+
+def update_table():
+    for row in tree.get_children():
+        tree.delete(row)
+    data_sorted = data[['Kraj', 'Indeks Jakości Życia']].sort_values(by='Indeks Jakości Życia', ascending=False)
+    for i, (country, score) in enumerate(data_sorted.itertuples(index=False, name=None), start=1):
+        tree.insert("", "end", values=(i, country, round(score, 4)))
+
+def update_chart():
+    ax.clear()
+    data_sorted = data.sort_values(by='Indeks Jakości Życia', ascending=False)
+    ax.barh(data_sorted['Kraj'], data_sorted['Indeks Jakości Życia'], color='skyblue')
+    ax.set_xlabel("Indeks Jakości Życia")
+    ax.set_title("Ranking krajów OECD")
+    ax.tick_params(axis='y', labelsize=8)  # Zmniejszenie rozmiaru etykiet na osi Y
+    canvas.draw()
+sliders = {}
+update_timer = None
+
+def refresh_data():
+    global weights
+    # Reset wag do wartości początkowych
+    weights = {var: 100 / len(variables) for var in variables}
+    
+    # Wyłącz tymczasowo reakcję na zmiany suwaków
+    for var in variables:
+        sliders[var].config(command=None)  # Odłączenie callbacka
+    
+    # Resetowanie suwaków do wartości domyślnych
+    for var in variables:
+        sliders[var].set(int(weights[var]))
+
+    # Ponowne przypisanie callbacka do suwaków
+    for var in variables:
+        sliders[var].config(command=lambda value, v=var: update_weights(v))
+
+    calculate_index()
+    update_table()
+    update_chart()
+def batch_update():
+    calculate_index()
+    update_table()
+    update_chart()
+
+
+def update_weights(changed_var):
+    global weights, update_timer
+
+    if update_timer:
+        update_timer.cancel()
+
+    # Pobranie wartości z suwaka
+    weights[changed_var] = sliders[changed_var].get()
+
+    # Normalizacja wag do 100%
+    total_weight = sum(weights.values())
+    if total_weight == 0:
+        return
+
+    for var in variables:
+        weights[var] = (weights[var] / total_weight) * 100
+
+    # Aktualizacja suwaków po normalizacji
+    for var in variables:
+        sliders[var].set(int(weights[var]))
+
+    # Opóźniona aktualizacja indeksu, tabeli i wykresu
+    update_timer = Timer(0.2, batch_update)
+    update_timer.start()
+
+
+
+root = tk.Tk()
+root.title("Dostosowanie wag wskaźników")
+root.geometry("1700x900")  # Zwiększenie rozmiaru okna
+
+# Ramka z suwakami i przewijanie
+frame_sliders = tk.Frame(root)
+frame_sliders.pack(side=tk.LEFT, padx=8, pady=10, fill="both", expand=True)
+
+# Canvas z przewijaniem
+# Canvas z przewijaniem
+canvas_sliders = tk.Canvas(frame_sliders)  # Usuwamy padding bezpośrednio z Canvas
+scrollbar = tk.Scrollbar(frame_sliders, orient="vertical", command=canvas_sliders.yview)
+canvas_sliders.configure(yscrollcommand=scrollbar.set)
+
+# Tworzymy wewnętrzny Frame z odpowiednim przesunięciem
+scrollable_frame = tk.Frame(canvas_sliders)
+
+# Ramka z przesunięciem w prawo
+offset_frame = tk.Frame(scrollable_frame, padx=0)  # To przesunie zawartość w prawo
+
+# Zwiększenie przestrzeni na suwaki
+for i, var in enumerate(variables):
+    label = ttk.Label(offset_frame, text=var, font=("Arial", 8))
+    label.grid(row=i, column=0, padx=5, pady=5, sticky="w")
+    
+    sliders[var] = tk.Scale(offset_frame, from_=0, to=100, orient="horizontal", length=150,  # Zwiększ długość suwaków
+                             font=("Arial", 8), 
+                             command=lambda value, v=var: update_weights(v))
+    sliders[var].set(int(weights[var]))
+    sliders[var].grid(row=i, column=1, padx=5, pady=1, sticky="e")
+    
+# Ustawienie canvas_sliders na odpowiednią szerokość, by umożliwić przewijanie
+canvas_sliders.config(scrollregion=canvas_sliders.bbox("all"))
+
+# Związujemy przewijanie z odpowiednim regionem
+scrollable_frame.bind(
+    "<Configure>", lambda e: canvas_sliders.configure(scrollregion=canvas_sliders.bbox("all"))
+)
+canvas_sliders.create_window((0, 0), window=scrollable_frame, anchor="nw")
+
+# Dodajemy przesunięcie w prawo
+offset_frame.pack()
+
+scrollbar.pack(side="right", fill="y")
+canvas_sliders.pack(side="left", fill="both", expand=True)
+
+# Dodanie minimalnej wysokości dla scrollable_frame, aby przewijanie działało prawidłowo
+
+# Ramka z tabelą i wykresem
+frame_results = tk.Frame(root)
+frame_results.pack(side=tk.RIGHT, padx=10, pady=10, fill="both", expand=True)
+
+# Tabela
+columns = ("Lp.", "Kraj", "Indeks Jakości Życia")
+tree = ttk.Treeview(frame_results, columns=columns, show="headings", style="Custom.Treeview")
+tree.tag_configure('Custom.Treeview', font=("Arial", 8))  # Zmiana czcionki tabeli
+for col in columns:
+    tree.heading(col, text=col)
+    tree.column(col, width=100)
+tree.pack()
+
+# Wykres
+fig, ax = plt.subplots(figsize=(10, 8))
+canvas = FigureCanvasTkAgg(fig, master=frame_results)
+canvas.get_tk_widget().pack()
+
+# Przycisk do odświeżenia danych
+refresh_button = tk.Button(root, text="Odśwież", font=("Arial", 8), command=refresh_data)  # Zmiana czcionki przycisku
+refresh_button.pack(side=tk.BOTTOM, padx=10, pady=10)
+
+calculate_index()
+update_table()
+update_chart()
+
+root.mainloop()
