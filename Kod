@@ -7,7 +7,7 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from threading import Timer
 
 # Wczytanie danych z pliku Excel
-file_path = r"C:\Users\48690\Desktop\OECD.xlsx" #Proszę wstawić własną ścieżkę
+file_path = r"C:\Users\48690\Desktop\OECD.xlsx"
 data = pd.read_excel(file_path)
 
 # Lista zmiennych ilościowych
