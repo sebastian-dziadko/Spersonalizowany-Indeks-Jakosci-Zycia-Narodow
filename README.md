@@ -31,17 +31,17 @@ Aplikacja wykorzystuje 16 wskaźników, z których każdy może być spersonaliz
 | **Realne ceny mieszkań** | Zmiana cen nieruchomości skorygowana o inflację (indeks). | Ekonomia |
 | **Wiek emerytalny** | Wiek emerytalny dla kobiet oraz mężczyzn. | Rynek Pracy |
 
-# Uruchamianie Aplikacji 
+# Uruchamianie Aplikacji   
 Aplikacja jest w pełni przenośna, ponieważ plik danych OECD.xlsx jest dołączony do projektu. Wystarczy zainstalować biblioteki.
 
-**1. Przygotowanie Plików i Instalacja**
+**1. Przygotowanie Plików i Instalacja**  
 Wykonaj te kroki, zanim zaczniesz uruchamiać kod w terminalu.
 
 Pobierz Projekt: Pobierz całe repozytorium (np. jako plik ZIP) i rozpakuj je w łatwo dostępnym miejscu.
 
 Napraw Nazwę Pliku: Znajdź plik Kod i zmień jego nazwę na Kod.py. Jest to konieczne, aby Python rozpoznał go jako skrypt.
 
-**2. Instalacja Wymaganych Bibliotek**
+**2. Instalacja Wymaganych Bibliotek**  
 Otwórz terminal (Wiersz Poleceń/PowerShell), aby zainstalować pakiety potrzebne do działania aplikacji.
 
 Przejdź do Folderu: Użyj komendy cd (Change Directory), aby wejść do rozpakowanego folderu projektu (tam, gdzie znajduje się plik Kod.py):
@@ -52,7 +52,7 @@ cd /sciezka/do/folderu/z/projektem
 **Zainstaluj pakiety:**  
 pip install pandas numpy matplotlib openpyxl  
 
-**3. Uruchomienie Aplikacji** 
+**3. Uruchomienie Aplikacji**   
 Będąc w terminalu w folderze projektu, wpisz:
 python Kod.py  
 Aplikacja z interfejsem graficznym (GUI) powinna się uruchomić. Możesz teraz dostosowywać wagi wskaźników jakości życia.
