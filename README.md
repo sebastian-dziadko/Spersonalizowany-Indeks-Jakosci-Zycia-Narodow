@@ -3,7 +3,7 @@ Aplikacja w Pythonie, która pozwala użytkownikowi na spersonalizowane obliczan
 
 Tradycyjne indeksy jakości życia (np. Human Development Index - HDI) wykorzystują z góry ustalone wagi. Ta aplikacja daje pełną kontrolę użytkownikowi. Pozwala ona odpowiedzieć na pytanie: "Jak wyglądałby ranking krajów, gdyby to moje priorytety (np. długość życia i niskie nierówności) były najważniejsze?".
 
-**Kluczowe Funkcje: **
+Kluczowe Funkcje:
   Personalizacja Wag: Użytkownik może ustawiać wagi (od 0 do 100) dla każdego z 20 wskaźników za pomocą interaktywnych suwaków.
 
   Dynamiczne Przeliczanie: Ranking krajów aktualizuje się natychmiast po zmianie wagi dowolnego czynnika.
