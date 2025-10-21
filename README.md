@@ -33,5 +33,5 @@ Aplikacja wykorzystuje 16 wskaźników, z których każdy może być spersonaliz
 | **PKB na godzinę pracy** | Wskaźnik efektywności i **wydajności pracy** w gospodarce. | Ekonomia |
 | **Śmierci drogowe na 100 k** | Liczba śmiertelnych wypadków drogowych. | Bezpieczeństwo |
 | **Realne ceny mieszkań** | Zmiana cen nieruchomości skorygowana o inflację (indeks). | Ekonomia |
-
+| **Wiek emerytalny** | Wiek emerytalny dla kobiet oraz mężczyzn. | Rynek Pracy |
 *W aplikacji dane są normalizowane i skalowane, aby nadać im równe znaczenie przed zastosowaniem wag użytkownika.*
