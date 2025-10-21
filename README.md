@@ -31,7 +31,7 @@ Aplikacja wykorzystuje 16 wskaźników, z których każdy może być spersonaliz
 | **Realne ceny mieszkań** | Zmiana cen nieruchomości skorygowana o inflację (indeks). | Ekonomia |
 | **Wiek emerytalny** | Wiek emerytalny dla kobiet oraz mężczyzn. | Rynek Pracy |
 
-**Uruchamianie Aplikacji (Indeks Jakości Życia)**
+# Uruchamianie Aplikacji (Indeks Jakości Życia)
 Aplikacja jest w pełni przenośna, ponieważ plik danych OECD.xlsx jest dołączony do projektu. Wystarczy zainstalować biblioteki.
 
 **1. Przygotowanie Plików i Instalacja**
