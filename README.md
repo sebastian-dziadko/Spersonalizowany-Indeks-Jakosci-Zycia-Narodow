@@ -57,7 +57,7 @@ Będąc w terminalu w folderze projektu, wpisz:
 python Kod.py  
 Aplikacja z interfejsem graficznym (GUI) powinna się uruchomić. Możesz teraz dostosowywać wagi wskaźników jakości życia.
 
-## Licencja##
+## Licencja
 
 Licencja MIT (MIT License)
 
