@@ -47,12 +47,10 @@ Otwórz terminal (Wiersz Poleceń/PowerShell), aby zainstalować pakiety potrzeb
 Przejdź do Folderu: Użyj komendy cd (Change Directory), aby wejść do rozpakowanego folderu projektu (tam, gdzie znajduje się plik Kod.py):
 
 
-PRZYKŁAD: Zastąp ścieżkę swoją własną
-cd /sciezka/do/folderu/z/projektem
-Zainstaluj Zależności: Zainstaluj pakiety:
-
-
-pip install pandas numpy matplotlib openpyxl
+PRZYKŁAD: Zastąp ścieżkę swoją własną  
+cd /sciezka/do/folderu/z/projektem  
+Zainstaluj Zależności: Zainstaluj pakiety:  
+pip install pandas numpy matplotlib openpyxl  
 
 **3. Uruchomienie Aplikacji** 
 Będąc w terminalu w folderze projektu, wpisz:
