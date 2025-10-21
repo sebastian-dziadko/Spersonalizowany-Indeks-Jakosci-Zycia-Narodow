@@ -2,16 +2,12 @@
 Aplikacja w Pythonie, która pozwala użytkownikowi na spersonalizowane obliczanie Indeksu Jakości Życia dla krajów OECD. Użytkownik decyduje o znaczeniu (wadze) każdego z kilkunastu wskaźników, a aplikacja dynamicznie przelicza ranking.
 
 Tradycyjne indeksy jakości życia (np. Human Development Index - HDI) wykorzystują z góry ustalone wagi. Ta aplikacja daje pełną kontrolę użytkownikowi. Pozwala ona odpowiedzieć na pytanie: "Jak wyglądałby ranking krajów, gdyby to moje priorytety (np. długość życia i niskie nierówności) były najważniejsze?".
+### Kluczowe Funkcje ✨
 
-Kluczowe Funkcje:
-  Personalizacja Wag: Użytkownik może ustawiać wagi (od 0 do 100) dla każdego z 20 wskaźników za pomocą interaktywnych suwaków.
-
-  Dynamiczne Przeliczanie: Ranking krajów aktualizuje się natychmiast po zmianie wagi dowolnego czynnika.
-
-  Wizualizacja: Prezentacja rankingu na czytelnym wykresie słupkowym oraz w tabeli dla TOP 10.
-
-  Szeroki Zakres Wskaźników: Analiza opiera się na danych z 20 różnych kategorii, obejmujących aspekty ekonomiczne, społeczne, zdrowotne i środowiskowe (patrz lista poniżej).
-
+* **Personalizacja Wag:** Użytkownik może ustawiać wagi (od 0 do 100) dla każdego z 20 wskaźników za pomocą interaktywnych suwaków.
+* **Dynamiczne Przeliczanie:** Ranking krajów aktualizuje się natychmiast po zmianie wagi dowolnego czynnika.
+* **Wizualizacja:** Prezentacja rankingu na czytelnym wykresie słupkowym oraz w tabeli dla TOP 10.
+* **Szeroki Zakres Wskaźników:** Analiza opiera się na danych z 20 różnych kategorii, obejmujących aspekty ekonomiczne, społeczne, zdrowotne i środowiskowe (patrz lista poniżej).
 Lista wskaźników:
 ## Szczegółowy Opis Wskaźników 📊
 
