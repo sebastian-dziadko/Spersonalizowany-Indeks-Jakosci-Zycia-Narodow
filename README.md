@@ -49,7 +49,7 @@ Przejdź do Folderu: Użyj komendy cd (Change Directory), aby wejść do rozpako
 
 PRZYKŁAD: Zastąp ścieżkę swoją własną  
 cd /sciezka/do/folderu/z/projektem  
-Zainstaluj Zależności: Zainstaluj pakiety:  
+**Zainstaluj pakiety:**  
 pip install pandas numpy matplotlib openpyxl  
 
 **3. Uruchomienie Aplikacji** 
