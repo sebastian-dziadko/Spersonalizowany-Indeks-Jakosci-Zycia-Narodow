@@ -53,6 +53,7 @@ Zainstaluj Zależności: Zainstaluj pakiety:
 
 
 pip install pandas numpy matplotlib openpyxl
+
 **3. Uruchomienie Aplikacji** 
 Będąc w terminalu w folderze projektu, wpisz:
 
