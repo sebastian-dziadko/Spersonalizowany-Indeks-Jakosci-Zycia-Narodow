@@ -4,9 +4,9 @@ Aplikacja w Pythonie, która pozwala użytkownikowi na spersonalizowane obliczan
 Tradycyjne indeksy jakości życia (np. Human Development Index - HDI) wykorzystują z góry ustalone wagi. Ta aplikacja daje pełną kontrolę użytkownikowi. Pozwala ona odpowiedzieć na pytanie: "Jak wyglądałby ranking krajów, gdyby to moje priorytety (np. długość życia i niskie nierówności) były najważniejsze?".
 ### Kluczowe Funkcje ✨
 
-* **Personalizacja Wag:** Użytkownik może ustawiać wagi (od 0 do 100) dla każdego z 20 wskaźników za pomocą interaktywnych suwaków.
+* **Personalizacja Wag:** Użytkownik może ustawiać wagi  dla każdego z 20 wskaźników za pomocą interaktywnych suwaków.
 * **Dynamiczne Przeliczanie:** Ranking krajów aktualizuje się natychmiast po zmianie wagi dowolnego czynnika.
-* **Wizualizacja:** Prezentacja rankingu na czytelnym wykresie słupkowym oraz w tabeli dla TOP 10.
+* **Wizualizacja:** Prezentacja rankingu na czytelnym wykresie słupkowym oraz w tabeli.
 * **Szeroki Zakres Wskaźników:** Analiza opiera się na danych z 20 różnych kategorii, obejmujących aspekty ekonomiczne, społeczne, zdrowotne i środowiskowe (patrz lista poniżej).
 Lista wskaźników:
 ## Szczegółowy Opis Wskaźników 📊
@@ -34,14 +34,14 @@ Aplikacja wykorzystuje 16 wskaźników, z których każdy może być spersonaliz
 **Uruchamianie Aplikacji (Indeks Jakości Życia)**
 Aplikacja jest w pełni przenośna, ponieważ plik danych OECD.xlsx jest dołączony do projektu. Wystarczy zainstalować biblioteki.
 
-1. Przygotowanie Plików i Instalacja 
+**1. Przygotowanie Plików i Instalacja**
 Wykonaj te kroki, zanim zaczniesz uruchamiać kod w terminalu.
 
 Pobierz Projekt: Pobierz całe repozytorium (np. jako plik ZIP) i rozpakuj je w łatwo dostępnym miejscu.
 
 Napraw Nazwę Pliku: Znajdź plik Kod i zmień jego nazwę na Kod.py. Jest to konieczne, aby Python rozpoznał go jako skrypt.
 
-2. Instalacja Wymaganych Bibliotek 
+**2. Instalacja Wymaganych Bibliotek**
 Otwórz terminal (Wiersz Poleceń/PowerShell), aby zainstalować pakiety potrzebne do działania aplikacji.
 
 Przejdź do Folderu: Użyj komendy cd (Change Directory), aby wejść do rozpakowanego folderu projektu (tam, gdzie znajduje się plik Kod.py):
@@ -53,7 +53,7 @@ Zainstaluj Zależności: Zainstaluj pakiety:
 
 
 pip install pandas numpy matplotlib openpyxl
-3. Uruchomienie Aplikacji 
+**3. Uruchomienie Aplikacji** 
 Będąc w terminalu w folderze projektu, wpisz:
 
 
