@@ -15,7 +15,7 @@ variables = [
     "Pkb per capita", "Konsumpcja", "Długość życia kobiet", "Długość życia mężczyzn",
     "Stopa bezrobocia", "Średnia roczna płaca", "Decyl 9/1 zarobki", "Decyl 9/5 zarobki",
     "Liczba godzin przepracowanych/pracownika", "Liczba samobójstw na 100 tys. mieszkanców",
-    "Wydatki publiczne jako % PKB", "Gini dochod", "Odsetek ubogich (dochod <50% mediany)",
+    "Wydatki publiczne jako % PKB", "Wskaźnik nierówności Giniego", "Odsetek ubogich (dochod <50% mediany)",
     "Decyl 9/5 dochód", "Decyl 9/1 dochód", "PKB na godzinę pracy ceny stale ppp",
     "smierci drogowe na 100 k", "Realne ceny mieszkan (2015=100)", "Wiek emerytalny mężczyzn", "Wiek emerytalny kobiet"
 ]
@@ -24,11 +24,10 @@ variables = [
 stimulants = {"Pkb per capita", "Konsumpcja", "Długość życia kobiet", "Długość życia mężczyzn",
               "Średnia roczna płaca", "Wydatki publiczne jako % PKB", "PKB na godzinę pracy ceny stale ppp"}
 
-destimulants = {"Wiek emerytalny kobiet", "Długość życia kobiet", 
-                "Długość życia mężczyzn",  "Decyl 9/1 zarobki", "Decyl 9/5 zarobki", 
+destimulants = {"Stopa bezrobocia", "Wiek emerytalny kobiet", "Wiek emerytalny mężczyzn",  "Decyl 9/1 zarobki", "Decyl 9/5 zarobki", 
                 "Liczba godzin przepracowanych/pracownika", "Liczba samobójstw na 100 tys. mieszkanców", 
-                "Gini dochod", "Odsetek ubogich (dochod <50% mediany)", 
-                "Decyl 9/5 dochód", "Decyl 9/1 dochód", "PKB na godzinę pracy ceny stale ppp", 
+                "Wskaźnik nierówności Giniego", "Odsetek ubogich (dochod <50% mediany)", 
+                "Decyl 9/5 dochód", "Decyl 9/1 dochód", 
                 "smierci drogowe na 100 k", "Realne ceny mieszkan (2015=100)"}
 
 # Domyślne wagi (równe, sumujące się do 100)
@@ -41,10 +40,21 @@ def normalize(variable, stimulant=True):
         return (data[variable].max() - data[variable]) / (data[variable].max() - data[variable].min())
 
 def calculate_index():
+    current_weights = np.array([weights[var] for var in variables])
+    total_weight = current_weights.sum()
+
+    if total_weight == 0:
+        data['Indeks Jakości Życia'] = 0.0
+        return
+
+    normalized_weights = current_weights / total_weight
+
     for var in variables:
         data[f"{var}_norm"] = normalize(var, stimulant=(var in stimulants))
+        
     data['Indeks Jakości Życia'] = data[[f"{var}_norm" for var in variables]].mul(
-        [weights[var] / 100 for var in variables]).sum(axis=1)
+        normalized_weights).sum(axis=1)
+
 
 def update_table():
     for row in tree.get_children():
@@ -89,34 +99,18 @@ def batch_update():
     update_table()
     update_chart()
 
-
 def update_weights(changed_var):
     global weights, update_timer
 
     if update_timer:
         update_timer.cancel()
 
-    # Pobranie wartości z suwaka
+    # KLUCZOWA ZMIANA: Zapisujemy wartość, ale NIE robimy normalizacji ani aktualizacji suwaków
     weights[changed_var] = sliders[changed_var].get()
 
-    # Normalizacja wag do 100%
-    total_weight = sum(weights.values())
-    if total_weight == 0:
-        return
-
-    for var in variables:
-        weights[var] = (weights[var] / total_weight) * 100
-
-    # Aktualizacja suwaków po normalizacji
-    for var in variables:
-        sliders[var].set(int(weights[var]))
-
-    # Opóźniona aktualizacja indeksu, tabeli i wykresu
-    update_timer = Timer(0.2, batch_update)
+    # Opóźniona aktualizacja (dla wydajności)
+    update_timer = Timer(0.5, batch_update)
     update_timer.start()
-
-
-
 root = tk.Tk()
 root.title("Dostosowanie wag wskaźników")
 root.geometry("1700x900")  # Zwiększenie rozmiaru okna
