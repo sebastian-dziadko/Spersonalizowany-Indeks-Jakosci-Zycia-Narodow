@@ -31,7 +31,7 @@ Aplikacja wykorzystuje 16 wskaźników, z których każdy może być spersonaliz
 | **Realne ceny mieszkań** | Zmiana cen nieruchomości skorygowana o inflację (indeks). | Ekonomia |
 | **Wiek emerytalny** | Wiek emerytalny dla kobiet oraz mężczyzn. | Rynek Pracy |
 
-# Uruchamianie Aplikacji (Indeks Jakości Życia)
+# Uruchamianie Aplikacji 
 Aplikacja jest w pełni przenośna, ponieważ plik danych OECD.xlsx jest dołączony do projektu. Wystarczy zainstalować biblioteki.
 
 **1. Przygotowanie Plików i Instalacja**
@@ -47,7 +47,7 @@ Otwórz terminal (Wiersz Poleceń/PowerShell), aby zainstalować pakiety potrzeb
 Przejdź do Folderu: Użyj komendy cd (Change Directory), aby wejść do rozpakowanego folderu projektu (tam, gdzie znajduje się plik Kod.py):
 
 
-# PRZYKŁAD: Zastąp ścieżkę swoją własną
+PRZYKŁAD: Zastąp ścieżkę swoją własną
 cd /sciezka/do/folderu/z/projektem
 Zainstaluj Zależności: Zainstaluj pakiety:
 
