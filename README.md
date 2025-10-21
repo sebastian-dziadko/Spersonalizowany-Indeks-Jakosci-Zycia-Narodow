@@ -56,3 +56,15 @@ pip install pandas numpy matplotlib openpyxl
 Będąc w terminalu w folderze projektu, wpisz:
 python Kod.py  
 Aplikacja z interfejsem graficznym (GUI) powinna się uruchomić. Możesz teraz dostosowywać wagi wskaźników jakości życia.
+
+## Licencja##
+
+Licencja MIT (MIT License)
+
+Copyright (c) 2025 Sebastian Dziadko
+
+Niniejszym udziela się nieodpłatnie każdej osobie, która uzyska kopię tego oprogramowania i związanej z nim dokumentacji (dalej "Oprogramowanie"), prawo do korzystania z Oprogramowania bez żadnych ograniczeń, w tym między innymi prawo do używania, kopiowania, modyfikowania, łączenia, publikowania, rozpowszechniania, udzielania sublicencji i/lub sprzedaży kopii Oprogramowania, z zastrzeżeniem następujących warunków:
+
+Powyższa informacja o prawach autorskich i niniejsze zezwolenie muszą być zawarte we wszystkich kopiach lub istotnych częściach Oprogramowania.
+
+OPROGRAMOWANIE JEST DOSTARCZANE "TAKIE, JAKIE JEST", BEZ JAKIEJKOLWIEK GWARANCJI, WYRAŹNEJ LUB DOROZUMIANEJ, W TYM MIĘDZY INNYMI GWARANCJI PRZYDATNOŚCI HANDLOWEJ, PRZYDATNOŚCI DO OKREŚLONEGO CELU I NIENARUSZALNOŚCI. W ŻADNYM WYPADKU AUTORZY LUB WŁAŚCICIELE PRAW AUTORSKICH NIE PONOSZĄ ODPOWIEDZIALNOŚCI ZA ŻADNE ROSZCZENIA, SZKODY LUB INNE ZOBOWIĄZANIA WYNIKAJĄCE Z UMOWY, CZYNÓW NIEDOZWOLONYCH LUB INNYCH DZIAŁAŃ, ZWIĄZANE Z OPROGRAMOWANIEM LUB KORZYSTANIEM Z OPROGRAMOWANIA LUB INNYMI TRANSAKCJAMI Z OPROGRAMOWANIEM.
