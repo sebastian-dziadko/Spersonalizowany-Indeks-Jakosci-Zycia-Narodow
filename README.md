@@ -56,5 +56,6 @@ pip install pandas numpy matplotlib openpyxl
 Będąc w terminalu w folderze projektu, wpisz:
 
 
-python Kod.py
+python Kod.py  
 Aplikacja z interfejsem graficznym (GUI) powinna się uruchomić. Możesz teraz dostosowywać wagi wskaźników jakości życia.
+python Kod.py
