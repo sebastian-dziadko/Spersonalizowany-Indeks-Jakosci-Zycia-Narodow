@@ -20,7 +20,7 @@ Aplikacja wykorzystuje 16 wskaźników, z których każdy może być spersonaliz
 | **Długość życia kobiet/mężczyzn** | Oczekiwana długość życia w chwili urodzenia. | Zdrowie |
 | **Stopa bezrobocia** | Procent siły roboczej bez pracy. Wskaźnik stabilności rynku pracy. | Rynek Pracy |
 | **Średnia roczna płaca** | Średnia wynagrodzeń w kraju w skali roku. | Ekonomia |
-| **Decyl 9/1 zarobki/dochód** | Stosunek dochodów (lub zarobków) 10% najbogatszych do 10% najbiedniejszych. | Nierówności |
+| **Decyl 9/1 i 9/5 zarobki/dochód** | Stosunek dochodów (lub zarobków) 10% najbogatszych do 10% najbiedniejszych. | Nierówności |
 | **Liczba godzin przepracowanych/pracownika** | Średnia liczba godzin przepracowanych rocznie. Wskaźnik Work-Life Balance. | Rynek Pracy |
 | **Liczba samobójstw na 100 tys.** | Wskaźnik zdrowia psychicznego i bezpieczeństwa społecznego. | Zdrowie / Bezpieczeństwo |
 | **Wydatki publiczne jako \% PKB** | Łączne wydatki rządowe w stosunku do PKB. Miernik roli państwa w gospodarce. | Finanse Publ. |
@@ -30,4 +30,32 @@ Aplikacja wykorzystuje 16 wskaźników, z których każdy może być spersonaliz
 | **Śmierci drogowe na 100 k** | Liczba śmiertelnych wypadków drogowych. | Bezpieczeństwo |
 | **Realne ceny mieszkań** | Zmiana cen nieruchomości skorygowana o inflację (indeks). | Ekonomia |
 | **Wiek emerytalny** | Wiek emerytalny dla kobiet oraz mężczyzn. | Rynek Pracy |
-*W aplikacji dane są normalizowane i skalowane, aby nadać im równe znaczenie przed zastosowaniem wag użytkownika.*
+
+**Uruchamianie Aplikacji (Indeks Jakości Życia)**
+Aplikacja jest w pełni przenośna, ponieważ plik danych OECD.xlsx jest dołączony do projektu. Wystarczy zainstalować biblioteki.
+
+1. Przygotowanie Plików i Instalacja 
+Wykonaj te kroki, zanim zaczniesz uruchamiać kod w terminalu.
+
+Pobierz Projekt: Pobierz całe repozytorium (np. jako plik ZIP) i rozpakuj je w łatwo dostępnym miejscu.
+
+Napraw Nazwę Pliku: Znajdź plik Kod i zmień jego nazwę na Kod.py. Jest to konieczne, aby Python rozpoznał go jako skrypt.
+
+2. Instalacja Wymaganych Bibliotek 
+Otwórz terminal (Wiersz Poleceń/PowerShell), aby zainstalować pakiety potrzebne do działania aplikacji.
+
+Przejdź do Folderu: Użyj komendy cd (Change Directory), aby wejść do rozpakowanego folderu projektu (tam, gdzie znajduje się plik Kod.py):
+
+
+# PRZYKŁAD: Zastąp ścieżkę swoją własną
+cd /sciezka/do/folderu/z/projektem
+Zainstaluj Zależności: Zainstaluj pakiety:
+
+
+pip install pandas numpy matplotlib openpyxl
+3. Uruchomienie Aplikacji 
+Będąc w terminalu w folderze projektu, wpisz:
+
+
+python Kod.py
+Aplikacja z interfejsem graficznym (GUI) powinna się uruchomić. Możesz teraz dostosowywać wagi wskaźników jakości życia.
